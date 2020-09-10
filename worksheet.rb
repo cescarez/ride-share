@@ -161,7 +161,8 @@ def highest_earning_day(database, driver)
   highest_earning_day = nil
   current_earnings = 0
   highest_earnings = 0
-  database[driver].each do |ride|
+  driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
+  driver_data_by_date.each do |ride|
     if ride[:ride_date] == current_date
       current_earnings += ride[:ride_cost]
     else
@@ -258,7 +259,8 @@ puts "The driver with the highest average rating was #{highest_rated(data_by_dri
 # highest_earning_day = nil
 # current_earnings = 0
 # highest_earnings = 0
-# database[driver].each do |ride|
+# driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
+# driver_data_by_date.each do |ride|
 #   if ride[:ride_date] == current_date
 #     current_earnings += ride[:ride_cost]
 #   else
