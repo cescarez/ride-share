@@ -122,8 +122,7 @@ def total_earnings(database, driver)
 end
 
 def average_rating(database, driver)
-  total_rating = 0
-  database[driver].each { |ride| total_rating += ride[:ride_rating] }
+  total_rating = database[driver].each.sum { |ride| ride[:ride_rating] }
   average_rating = total_rating / total_rides(database, driver)
   return  average_rating
 end
