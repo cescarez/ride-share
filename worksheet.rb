@@ -1,30 +1,3 @@
-#######################################################
-# Step 1: Establish the layers
-
-# In this section of the file, as a series of comments,
-# create a list of the layers you identify.
-# Which layers are nested in each other?
-# Which layers of data "have" within it a different layer?
-# Which layers are "next" to each other?
-
-########################################################
-# Step 2: Assign a data structure to each layer
-
-# Copy your list from above, and in this section
-# determine what data structure each layer should have
-
-########################################################
-# Step 3: Make the data structure!
-
-# Setup the entire data structure:
-# based off of the notes you have above, create the
-# and manually write in data presented in rides.csv
-# You should be copying and pasting the literal data
-# into this data structure, such as "DR0004"
-# and "3rd Feb 2016" and "RD0022"
-
-########################################################
-# Step 4: Total Driver's Earnings and Number of Rides
 
 # Use an iteration blocks to print the following answers:
 # - the number of rides each driver has given
@@ -177,7 +150,7 @@ def highest_earning_day(database, driver)
   return highest_earning_day
 end
 
-#Main program. Print each driver info.
+#Main program. Print each driver info. ############################################
 data_by_driver.each_key do |driver|
   puts "#{driver}: "
   puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
@@ -189,88 +162,3 @@ end
 
 puts "The driver that made the most money was #{highest_earner(data_by_driver)}"
 puts "The driver with the highest average rating was #{highest_rated(data_by_driver)}"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#METHOD GRAVEYARD###############################
-# def total_rides(database, driver)
-#   total_rides = 0
-#   database[driver].each { total_rides += 1 }
-#   return total_rides
-# end
-#
-# def total_earnings(database, driver)
-#   total_earnings = 0
-#   database[driver].each { |ride| total_earnings += ride[:ride_cost] }
-# end
-#
-# def average_rating(database, driver)
-#   total_rating = 0
-#   database[driver].each { |ride| total_rating += ride[:ride_rating] }
-#   average_rating = total_rating / total_rides(database, driver)
-#   return  average_rating
-# end
-#
-# #HOW BY .max OR OTHER ENUMERABLE???
-# def highest_earner(database)
-#   highest_earnings = 0
-#   highest_earner = nil
-#   database.each_key do |driver|
-#     driver_earnings = total_earnings(database, driver)
-#     if (driver_earnings > highest_earnings)
-#       highest_earnings = driver_earnings
-#       highest_earner = driver
-#     end
-#   end
-#   return highest_earner
-# end
-#
-#HOW BY .max OR OTHER ENUMERABLE???
-# def highest_rated(database)
-#   highest_rating = 0
-#   highest_rated = nil
-#   database.each_key do |driver|
-#     driver_rating = average_rating(database, driver)
-#     if (driver_rating > highest_rating)
-#       highest_rating = driver_rating
-#       highest_rated = driver
-#     end
-#   end
-#   return highest_rated
-# end
-#
-# #HOW BY .max OR OTHER ENUMERABLE???
-# def highest_earning_day(database)
-# current_date = nil
-# highest_earning_day = nil
-# current_earnings = 0
-# highest_earnings = 0
-# driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
-# driver_data_by_date.each do |ride|
-#   if ride[:ride_date] == current_date
-#     current_earnings += ride[:ride_cost]
-#   else
-#     current_date = ride[:ride_date]
-#     current_earnings = ride[:ride_cost]
-#   end
-#   if current_earnings > highest_earnings
-#     highest_earnings = current_earnings
-#     highest_earning_day = current_date
-#   end
-# end
-# return highest_earning_day
-# end
