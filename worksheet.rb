@@ -33,7 +33,6 @@
 # - Which driver made the most money?
 # - Which driver has the highest average rating?
 
-
 data_by_driver = {
   DR0001: [
     {
@@ -162,50 +161,33 @@ def highest_earning_day(database, driver)
   highest_earning_day = nil
   current_earnings = 0
   highest_earnings = 0
-  driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
-  driver_data_by_date.each do |ride|
-    puts "~~~~~~~~~~"
-    p ride[:ride_date]
-    p ride[:ride_cost]
-    p current_date
-    p ride[:ride_date] == current_date
-    puts "~~~~~~~~~~"
+  database[driver].each do |ride|
     if ride[:ride_date] == current_date
       current_earnings += ride[:ride_cost]
     else
       current_date = ride[:ride_date]
       current_earnings = ride[:ride_cost]
-      puts "current earnings inside else: #{current_earnings}"
-      puts "current date inside else: #{current_date}"
     end
     if current_earnings > highest_earnings
-      current_earnings = highest_earnings
-      current_date = highest_earning_day
+      highest_earnings = current_earnings
+      highest_earning_day = current_date
     end
-    puts "~~~~~~~~~~"
-    puts "current earnings: #{current_earnings}"
-    puts "current date: #{current_date}"
-    puts "~~~~~~~~~~"
-    puts "highest earnings: #{highest_earnings}"
-    puts "highest earning date: #{highest_earning_day}"
-    p current_earnings > highest_earnings
-    puts "~~~~~~~~~~"
   end
   return highest_earning_day
 end
 
 #Main program. Print each driver info.
 data_by_driver.each_key do |driver|
-#   puts "#{driver}: "
-#   puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
-#   puts "Total Earnings: #{total_earnings(data_by_driver, driver)}"
-#   puts "Average Rating: #{"%.1f"%average_rating(data_by_driver, driver)}"
+  puts "#{driver}: "
+  puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
+  puts "Total Earnings: #{total_earnings(data_by_driver, driver)}"
+  puts "Average Rating: #{"%.1f"%average_rating(data_by_driver, driver)}"
   puts "Highest Earning Day: #{highest_earning_day(data_by_driver, driver)}"
   puts
 end
-#
-# puts "The driver that made the most money was #{highest_earner(data_by_driver)}"
-# puts "The driver with the highest average rating was #{highest_rated(data_by_driver)}"
+
+puts "The driver that made the most money was #{highest_earner(data_by_driver)}"
+puts "The driver with the highest average rating was #{highest_rated(data_by_driver)}"
 
 
 
@@ -223,7 +205,7 @@ end
 
 
 
-#METHOD GRAVEYARDdef total_rides(database, driver)
+#METHOD GRAVEYARD###############################
 # def total_rides(database, driver)
 #   total_rides = 0
 #   database[driver].each { total_rides += 1 }
@@ -272,5 +254,21 @@ end
 #
 # #HOW BY .max OR OTHER ENUMERABLE???
 # def highest_earning_day(database)
-#
+# current_date = nil
+# highest_earning_day = nil
+# current_earnings = 0
+# highest_earnings = 0
+# database[driver].each do |ride|
+#   if ride[:ride_date] == current_date
+#     current_earnings += ride[:ride_cost]
+#   else
+#     current_date = ride[:ride_date]
+#     current_earnings = ride[:ride_cost]
+#   end
+#   if current_earnings > highest_earnings
+#     highest_earnings = current_earnings
+#     highest_earning_day = current_date
+#   end
+# end
+# return highest_earning_day
 # end
