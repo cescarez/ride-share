@@ -143,25 +143,69 @@ end
 
 #HOW BY .max OR OTHER ENUMERABLE???
 def highest_rated(database)
-
+  highest_rating = 0
+  highest_rated = nil
+  database.each_key do |driver|
+    driver_rating = average_rating(database, driver)
+    if (driver_rating > highest_rating)
+      highest_rating = driver_rating
+      highest_rated = driver
+    end
+  end
+  return highest_rated
 end
 
 #HOW BY .max OR OTHER ENUMERABLE???
-def highest_earning_day(database)
-
+# #SCOPE ISSUES FOR ELSE STATEMENT ASSIGNING "CURRENT" VALUES
+def highest_earning_day(database, driver)
+  current_date = nil
+  highest_earning_day = nil
+  current_earnings = 0
+  highest_earnings = 0
+  driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
+  driver_data_by_date.each do |ride|
+    puts "~~~~~~~~~~"
+    p ride[:ride_date]
+    p ride[:ride_cost]
+    p current_date
+    p ride[:ride_date] == current_date
+    puts "~~~~~~~~~~"
+    if ride[:ride_date] == current_date
+      current_earnings += ride[:ride_cost]
+    else
+      current_date = ride[:ride_date]
+      current_earnings = ride[:ride_cost]
+      puts "current earnings inside else: #{current_earnings}"
+      puts "current date inside else: #{current_date}"
+    end
+    if current_earnings > highest_earnings
+      current_earnings = highest_earnings
+      current_date = highest_earning_day
+    end
+    puts "~~~~~~~~~~"
+    puts "current earnings: #{current_earnings}"
+    puts "current date: #{current_date}"
+    puts "~~~~~~~~~~"
+    puts "highest earnings: #{highest_earnings}"
+    puts "highest earning date: #{highest_earning_day}"
+    p current_earnings > highest_earnings
+    puts "~~~~~~~~~~"
+  end
+  return highest_earning_day
 end
 
 #Main program. Print each driver info.
 data_by_driver.each_key do |driver|
-  puts "#{driver}: "
-  puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
-  puts "Total Earnings: #{total_earnings(data_by_driver, driver)}"
-  puts "Average Rating: #{"%.1f"%average_rating(data_by_driver, driver)}"
+#   puts "#{driver}: "
+#   puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
+#   puts "Total Earnings: #{total_earnings(data_by_driver, driver)}"
+#   puts "Average Rating: #{"%.1f"%average_rating(data_by_driver, driver)}"
+  puts "Highest Earning Day: #{highest_earning_day(data_by_driver, driver)}"
   puts
 end
-
-puts "The highest earning driver was #{highest_earner(data_by_driver)}"
-
+#
+# puts "The driver that made the most money was #{highest_earner(data_by_driver)}"
+# puts "The driver with the highest average rating was #{highest_rated(data_by_driver)}"
 
 
 
@@ -214,7 +258,16 @@ puts "The highest earning driver was #{highest_earner(data_by_driver)}"
 #
 #HOW BY .max OR OTHER ENUMERABLE???
 # def highest_rated(database)
-#
+#   highest_rating = 0
+#   highest_rated = nil
+#   database.each_key do |driver|
+#     driver_rating = average_rating(database, driver)
+#     if (driver_rating > highest_rating)
+#       highest_rating = driver_rating
+#       highest_rated = driver
+#     end
+#   end
+#   return highest_rated
 # end
 #
 # #HOW BY .max OR OTHER ENUMERABLE???
