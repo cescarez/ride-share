@@ -3,7 +3,9 @@
 # Ada Developer's Academy C14
 # Ada Stage 1 Assignment, "Ride Share": https://github.com/Ada-C14/ride-share
 # Sources:
-# Future modifications:
+## https://ruby-doc.org/core-2.6.5/Hash.html
+## https://ruby-doc.org/core-2.6.5/Enumerator.html
+# Future modifications: use enumerators for "highest" methods
 
 data_by_driver = {
   DR0001: [
@@ -83,7 +85,6 @@ data_by_driver = {
 }
 
 #METHODS##########################################################
-
 # - the number of rides each driver has given
 def total_rides(database, driver)
   total_rides = database[driver].count
@@ -106,6 +107,7 @@ end
 # - the average rating for each driver
 #HOW BY .max OR OTHER ENUMERABLE???
 def highest_earner(database)
+  database[driver].max_by { |ride| ride[:ride_rating] }
   highest_earnings = 0
   highest_earner = nil
   database.each_key do |driver|
@@ -168,88 +170,3 @@ end
 
 puts "The driver that made the most money was #{highest_earner(data_by_driver)}"
 puts "The driver with the highest average rating was #{highest_rated(data_by_driver)}"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#METHOD GRAVEYARD###############################
-# def total_rides(database, driver)
-#   total_rides = 0
-#   database[driver].each { total_rides += 1 }
-#   return total_rides
-# end
-#
-# def total_earnings(database, driver)
-#   total_earnings = 0
-#   database[driver].each { |ride| total_earnings += ride[:ride_cost] }
-# end
-#
-# def average_rating(database, driver)
-#   total_rating = 0
-#   database[driver].each { |ride| total_rating += ride[:ride_rating] }
-#   average_rating = total_rating / total_rides(database, driver)
-#   return  average_rating
-# end
-#
-# #HOW BY .max OR OTHER ENUMERABLE???
-# def highest_earner(database)
-#   highest_earnings = 0
-#   highest_earner = nil
-#   database.each_key do |driver|
-#     driver_earnings = total_earnings(database, driver)
-#     if (driver_earnings > highest_earnings)
-#       highest_earnings = driver_earnings
-#       highest_earner = driver
-#     end
-#   end
-#   return highest_earner
-# end
-#
-#HOW BY .max OR OTHER ENUMERABLE???
-# def highest_rated(database)
-#   highest_rating = 0
-#   highest_rated = nil
-#   database.each_key do |driver|
-#     driver_rating = average_rating(database, driver)
-#     if (driver_rating > highest_rating)
-#       highest_rating = driver_rating
-#       highest_rated = driver
-#     end
-#   end
-#   return highest_rated
-# end
-#
-# #HOW BY .max OR OTHER ENUMERABLE???
-# def highest_earning_day(database)
-# current_date = nil
-# highest_earning_day = nil
-# current_earnings = 0
-# highest_earnings = 0
-# driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
-# driver_data_by_date.each do |ride|
-#   if ride[:ride_date] == current_date
-#     current_earnings += ride[:ride_cost]
-#   else
-#     current_date = ride[:ride_date]
-#     current_earnings = ride[:ride_cost]
-#   end
-#   if current_earnings > highest_earnings
-#     highest_earnings = current_earnings
-#     highest_earning_day = current_date
-#   end
-# end
-# return highest_earning_day
-# end
