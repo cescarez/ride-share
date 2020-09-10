@@ -1,37 +1,9 @@
-#######################################################
-# Step 1: Establish the layers
-
-# In this section of the file, as a series of comments,
-# create a list of the layers you identify.
-# Which layers are nested in each other?
-# Which layers of data "have" within it a different layer?
-# Which layers are "next" to each other?
-
-########################################################
-# Step 2: Assign a data structure to each layer
-
-# Copy your list from above, and in this section
-# determine what data structure each layer should have
-
-########################################################
-# Step 3: Make the data structure!
-
-# Setup the entire data structure:
-# based off of the notes you have above, create the
-# and manually write in data presented in rides.csv
-# You should be copying and pasting the literal data
-# into this data structure, such as "DR0004"
-# and "3rd Feb 2016" and "RD0022"
-
-########################################################
-# Step 4: Total Driver's Earnings and Number of Rides
-
-# Use an iteration blocks to print the following answers:
-# - the number of rides each driver has given
-# - the total amount of money each driver has made
-# - the average rating for each driver
-# - Which driver made the most money?
-# - Which driver has the highest average rating?
+# Author: Christabel Sebastian
+# Last updated: September 10, 2020
+# Ada Developer's Academy C14
+# Ada Stage 1 Assignment, "Ride Share": https://github.com/Ada-C14/ride-share
+# Sources:
+# Future modifications:
 
 data_by_driver = {
   DR0001: [
@@ -110,22 +82,28 @@ data_by_driver = {
   ]
 }
 
+#METHODS##########################################################
+
+# - the number of rides each driver has given
 def total_rides(database, driver)
   total_rides = database[driver].count
   return total_rides
 end
 
+# Use an iteration blocks to print the following answers:
 def total_earnings(database, driver)
   total_earnings = database[driver].each.sum { |ride| ride[:ride_cost] }
   return total_earnings
 end
 
+# - the total amount of money each driver has made
 def average_rating(database, driver)
   total_rating = database[driver].each.sum { |ride| ride[:ride_rating] }
   average_rating = total_rating / total_rides(database, driver)
   return  average_rating
 end
 
+# - the average rating for each driver
 #HOW BY .max OR OTHER ENUMERABLE???
 def highest_earner(database)
   highest_earnings = 0
@@ -140,6 +118,7 @@ def highest_earner(database)
   return highest_earner
 end
 
+# - Which driver made the most money?
 #HOW BY .max OR OTHER ENUMERABLE???
 def highest_rated(database)
   highest_rating = 0
@@ -154,8 +133,8 @@ def highest_rated(database)
   return highest_rated
 end
 
+# - Which driver has the highest average rating?
 #HOW BY .max OR OTHER ENUMERABLE???
-# #SCOPE ISSUES FOR ELSE STATEMENT ASSIGNING "CURRENT" VALUES
 def highest_earning_day(database, driver)
   current_date = nil
   highest_earning_day = nil
