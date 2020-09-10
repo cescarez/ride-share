@@ -3,10 +3,89 @@ DR0004,3rd Feb 2016,5,RD0022,5
 DR0001,3rd Feb 2016,10,RD0003,3
 DR0002,3rd Feb 2016,25,RD0073,5
 DR0001,3rd Feb 2016,30,RD0015,4
+
 DR0003,4th Feb 2016,5,RD0066,5
 DR0004,4th Feb 2016,10,RD0022,4
 DR0002,4th Feb 2016,15,RD0013,1
+
 DR0003,5th Feb 2016,50,RD0003,2
 DR0002,5th Feb 2016,35,RD0066,3
 DR0004,5th Feb 2016,20,RD0073,5
 DR0001,5th Feb 2016,45,RD0003,2
+
+data_by_driver = [
+  DR0001: [
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 10
+    rider: "RD0003"
+    ride_rating: 3
+    },
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 30
+    rider: "RD0015"
+    ride_rating: 4
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 45
+    rider: "RD0003"
+    ride_rating: 2
+    },
+  ],
+  DR0002: [
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 25
+    rider: "RD0073"
+    ride_rating: 5
+    },
+    {
+    ride_date: "4th Feb 2016"
+    ride_cost: 15
+    rider: "RD0013"
+    ride_rating: 1
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 35
+    rider: "RD0066"
+    ride_rating: 3
+    },
+  ],
+  DR0003: [
+    {
+    ride_date: "4th Feb 2016"
+    ride_cost: 5
+    rider: "RD0066"
+    ride_rating: 5
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 50
+    rider: "RD0003"
+    ride_rating: 2
+    },
+  ],
+  DR0004:  [
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 5
+    rider: "RD0022"
+    ride_rating: 5
+    },
+    {
+    ride_date: "4th Feb 2016"
+    ride_cost: 10
+    rider: "RD0022"
+    ride_rating: 4
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 20
+    rider: "RD0073"
+    ride_rating: 5
+    },
+  ]
+]

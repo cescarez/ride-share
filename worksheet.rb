@@ -32,3 +32,117 @@
 # - the average rating for each driver
 # - Which driver made the most money?
 # - Which driver has the highest average rating?
+
+
+data_by_driver = {
+  DR0001: [
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 10
+    rider: "RD0003"
+    ride_rating: 3
+    },
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 30
+    rider: "RD0015"
+    ride_rating: 4
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 45
+    rider: "RD0003"
+    ride_rating: 2
+    },
+  ],
+  DR0002: [
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 25
+    rider: "RD0073"
+    ride_rating: 5
+    },
+    {
+    ride_date: "4th Feb 2016"
+    ride_cost: 15
+    rider: "RD0013"
+    ride_rating: 1
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 35
+    rider: "RD0066"
+    ride_rating: 3
+    },
+  ],
+  DR0003: [
+    {
+    ride_date: "4th Feb 2016"
+    ride_cost: 5
+    rider: "RD0066"
+    ride_rating: 5
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 50
+    rider: "RD0003"
+    ride_rating: 2
+    },
+  ],
+  DR0004:  [
+    {
+    ride_date: "3rd Feb 2016"
+    ride_cost: 5
+    rider: "RD0022"
+    ride_rating: 5
+    },
+    {
+    ride_date: "4th Feb 2016"
+    ride_cost: 10
+    rider: "RD0022"
+    ride_rating: 4
+    },
+    {
+    ride_date: "5th Feb 2016"
+    ride_cost: 20
+    rider: "RD0073"
+    ride_rating: 5
+    },
+  ]
+}
+
+def total_rides(database)
+  total_rides = 0
+  database.each do |driver|
+    driver.each do |ride|
+      total_rides = ride[:price]
+    end
+  end
+  return total_rides
+end
+
+def total_earnings(database)
+  total_earnings = 0
+  database.each do |driver|
+    driver.each do |ride|
+      total_earnings = ride[:price]
+    end
+  end
+  return total_earnings
+end
+
+def average_rating(database)
+
+end
+
+def highest_earner(database)
+
+end
+
+def highest_rated(database)
+
+end
+
+def highest_earning_day(database)
+
+end
