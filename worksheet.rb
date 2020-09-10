@@ -158,7 +158,7 @@ def highest_earning_day(database, driver)
   return highest_earning_day
 end
 
-#Main program. Print each driver info.
+#MAIN################################################################ 
 data_by_driver.each_key do |driver|
   puts "#{driver}: "
   puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
