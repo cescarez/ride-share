@@ -105,33 +105,22 @@ def average_rating(database, driver)
 end
 
 # - the average rating for each driver
-#HOW BY .max OR OTHER ENUMERABLE???
 def highest_earner(database)
-  database[driver].max_by { |ride| ride[:ride_rating] }
-  highest_earnings = 0
-  highest_earner = nil
-  database.each_key do |driver|
-    driver_earnings = total_earnings(database, driver)
-    if (driver_earnings > highest_earnings)
-      highest_earnings = driver_earnings
-      highest_earner = driver
-    end
-  end
+  drivers = database.keys
+  driver_earnings = drivers.map { |driver| { "#{driver}": total_earnings(database, driver) } }
+  #simplify the below?
+  highest_earner = (driver_earnings.max_by { |driver, earning| earning }).keys.first
   return highest_earner
 end
 
 # - Which driver made the most money?
-#HOW BY .max OR OTHER ENUMERABLE???
+# NOT WORKING
 def highest_rated(database)
-  highest_rating = 0
-  highest_rated = nil
-  database.each_key do |driver|
-    driver_rating = average_rating(database, driver)
-    if (driver_rating > highest_rating)
-      highest_rating = driver_rating
-      highest_rated = driver
-    end
-  end
+  drivers = database.keys
+  driver_ratings = drivers.map { |driver| { "#{driver}": driver[:ride_rating] } }
+  #how to simplify the below?
+  p driver_ratings
+  highest_rated = (driver_ratings.max_by { |driver, rating| rating }).keys.first
   return highest_rated
 end
 
