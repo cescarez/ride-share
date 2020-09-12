@@ -107,7 +107,6 @@ end
 # - the average rating for each driver
 #HOW BY .max OR OTHER ENUMERABLE???
 def highest_earner(database)
-  database[driver].max_by { |ride| ride[:ride_rating] }
   highest_earnings = 0
   highest_earner = nil
   database.each_key do |driver|
