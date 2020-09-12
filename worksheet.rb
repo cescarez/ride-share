@@ -13,19 +13,19 @@ data_by_driver = {
     ride_date: "3rd Feb 2016",
     ride_cost: 10,
     rider: "RD0003",
-    ride_rating: 3,
+    ride_rating: 3
     },
     {
     ride_date: "3rd Feb 2016",
     ride_cost: 30,
     rider: "RD0015",
-    ride_rating: 4,
+    ride_rating: 4
     },
     {
     ride_date: "5th Feb 2016",
     ride_cost: 45,
     rider: "RD0003",
-    ride_rating: 2,
+    ride_rating: 2
     }
   ],
   DR0002: [
@@ -33,19 +33,19 @@ data_by_driver = {
     ride_date: "3rd Feb 2016",
     ride_cost: 25,
     rider: "RD0073",
-    ride_rating: 5,
+    ride_rating: 5
     },
     {
     ride_date: "4th Feb 2016",
     ride_cost: 15,
     rider: "RD0013",
-    ride_rating: 1,
+    ride_rating: 1
     },
     {
     ride_date: "5th Feb 2016",
     ride_cost: 35,
     rider: "RD0066",
-    ride_rating: 3,
+    ride_rating: 3
     }
   ],
   DR0003: [
@@ -53,13 +53,13 @@ data_by_driver = {
     ride_date: "4th Feb 2016",
     ride_cost: 5,
     rider: "RD0066",
-    ride_rating: 5,
+    ride_rating: 5
     },
     {
     ride_date: "5th Feb 2016",
     ride_cost: 50,
     rider: "RD0003",
-    ride_rating: 2,
+    ride_rating: 2
     }
   ],
   DR0004:  [
@@ -67,19 +67,19 @@ data_by_driver = {
     ride_date: "3rd Feb 2016",
     ride_cost: 5,
     rider: "RD0022",
-    ride_rating: 5,
+    ride_rating: 5
     },
     {
     ride_date: "4th Feb 2016",
     ride_cost: 10,
     rider: "RD0022",
-    ride_rating: 4,
+    ride_rating: 4
     },
     {
     ride_date: "5th Feb 2016",
     ride_cost: 20,
     rider: "RD0073",
-    ride_rating: 5,
+    ride_rating: 5
     }
   ]
 }
@@ -109,18 +109,16 @@ def highest_earner(database)
   drivers = database.keys
   driver_earnings = drivers.map { |driver| { "#{driver}": total_earnings(database, driver) } }
   #simplify the below?
-  highest_earner = (driver_earnings.max_by { |driver, earning| earning }).keys.first
+  highest_earner = (driver_earnings.max_by { |earning| earning.values }).keys.first
   return highest_earner
 end
 
 # - Which driver made the most money?
-# NOT WORKING
 def highest_rated(database)
   drivers = database.keys
-  driver_ratings = drivers.map { |driver| { "#{driver}": driver[:ride_rating] } }
-  #how to simplify the below?
-  p driver_ratings
-  highest_rated = (driver_ratings.max_by { |driver, rating| rating }).keys.first
+  driver_ratings = drivers.map { |driver| { "#{driver}": average_rating(database, driver) } }
+  #simplify the below?
+  highest_rated = (driver_ratings.max_by { |rating| rating.values }).keys.first
   return highest_rated
 end
 
