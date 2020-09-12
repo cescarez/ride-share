@@ -84,7 +84,7 @@ data_by_driver = {
   ]
 }
 
-#METHODS##########################################################
+#METHODS#########################################################
 # - the number of rides each driver has given
 def total_rides(database, driver)
   total_rides = database[driver].count
