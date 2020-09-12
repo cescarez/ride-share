@@ -106,18 +106,14 @@ end
 
 # - the average rating for each driver
 def highest_earner(database)
-  drivers = database.keys
-  driver_earnings = drivers.map { |driver| { "#{driver}": total_earnings(database, driver) } }
-  #simplify the below?
+  driver_earnings = database.each_key.map { |driver| { "#{driver}": total_earnings(database, driver) } }
   highest_earner = (driver_earnings.max_by { |earning| earning.values }).keys.first
   return highest_earner
 end
 
 # - Which driver made the most money?
 def highest_rated(database)
-  drivers = database.keys
-  driver_ratings = drivers.map { |driver| { "#{driver}": average_rating(database, driver) } }
-  #simplify the below?
+  driver_ratings = database.each_key.map { |driver| { "#{driver}": average_rating(database, driver) } }
   highest_rated = (driver_ratings.max_by { |rating| rating.values }).keys.first
   return highest_rated
 end
