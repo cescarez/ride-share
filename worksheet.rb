@@ -121,24 +121,16 @@ end
 # - Which driver has the highest average rating?
 #HOW BY .max OR OTHER ENUMERABLE???
 def highest_earning_day(database, driver)
-  current_date = nil
-  highest_earning_day = nil
-  current_earnings = 0
-  highest_earnings = 0
-  driver_data_by_date = database[driver].sort_by { |ride| ride[:ride_date]  }
-  driver_data_by_date.each do |ride|
-    if ride[:ride_date] == current_date
-      current_earnings += ride[:ride_cost]
-    else
-      current_date = ride[:ride_date]
-      current_earnings = ride[:ride_cost]
-    end
-    if current_earnings > highest_earnings
-      highest_earnings = current_earnings
-      highest_earning_day = current_date
-    end
+  max_earnings = database[driver].each.max { |ride1, ride2| ride1[:ride_cost] <=> ride2[:ride_cost] }
+  database[driver].each do |ride|
+      if ride[:ride_date] == max_earnings[:ride_date]
+        max_earnings[:ride_cost] += ride[:ride_cost]
+      # else
+      #   max_earnings[:ride_date] = ride[:ride_date]
+      #   max_earnings[:ride_cost] = ride[:ride_cost]
+      end
   end
-  return highest_earning_day
+  return max_earnings[:ride_date]
 end
 
 #Main program. Print each driver info.
