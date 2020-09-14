@@ -119,7 +119,7 @@ def highest_rated(database)
 end
 
 # - Which driver has the highest average rating?
-#HOW BY .max OR OTHER ENUMERABLE???
+# NOT WORKING
 def highest_earning_day(database, driver)
   max_earnings = database[driver].each.max { |ride1, ride2| ride1[:ride_cost] <=> ride2[:ride_cost] }
   database[driver].each do |ride|
