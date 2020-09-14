@@ -161,7 +161,7 @@ end
 data_by_driver.each_key do |driver|
   puts "#{driver}: "
   puts "Total Rides Given: #{total_rides(data_by_driver, driver)}"
-  puts "Total Earnings: #{total_earnings(data_by_driver, driver)}"
+  puts "Total Earnings: $#{"%.2f"%total_earnings(data_by_driver, driver)}"
   puts "Average Rating: #{"%.1f"%average_rating(data_by_driver, driver)}"
   puts "Highest Earning Day: #{highest_earning_day(data_by_driver, driver)}"
   puts
