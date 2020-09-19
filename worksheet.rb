@@ -93,13 +93,13 @@ end
 
 # Use an iteration blocks to print the following answers:
 def total_earnings(database, driver)
-  total_earnings = database[driver].each.sum { |ride| ride[:ride_cost] }
+  total_earnings = database[driver].each.sum { |ride| ride[:ride_cost].to_f }
   return total_earnings
 end
 
 # - the total amount of money each driver has made
 def average_rating(database, driver)
-  total_rating = database[driver].each.sum { |ride| ride[:ride_rating] }
+  total_rating = database[driver].each.sum { |ride| ride[:ride_rating].to_f }
   average_rating = total_rating / total_rides(database, driver)
   return  average_rating
 end
